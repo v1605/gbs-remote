@@ -1,0 +1,12 @@
+body{
+    margin: 1em;
+}
+.header-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+svg, input[type="checkbox"],[contenteditable]{
+    cursor: pointer;
+}

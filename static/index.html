@@ -1,0 +1,39 @@
+<!doctype html>
+<html data-bs-theme="dark">
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <script src="js/jquery.js"></script>
+        <script src="js/page.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Gbs-Remote Configuration</h1>
+        <section hidden class="wifi-section">
+            <h3>Wifi</h3>
+            <form id="wifi-form">
+                <div class="form-group">
+                    <label for="ssid">SSID:</label>
+                    <input id="ssid" name="ssid" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input id="password" name="password" class="form-control" type="password"/>
+                </div>
+                <button id="wifi-submit" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </section>
+        <section class="remote-settings">
+            <h3>Settings</h3>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="hostname">GBS-Control Hostname</label>
+                    <input id="hostname" name="hostname" class="form-control" type="text"/>
+                </div>
+                <button id="settings-submit" type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </section>
+    </body>
+</html>
