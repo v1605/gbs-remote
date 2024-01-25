@@ -1,5 +1,3 @@
-# input pins for ws_pico_114 v1 with four buttons
-
 from machine import Pin
 
 class Buttons():

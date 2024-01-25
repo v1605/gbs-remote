@@ -1,10 +1,10 @@
 from microdot import Microdot, send_file, Request, Response, redirect
 from wifimgr import WifiManager
-import config_manager
 from menu_controller import MenuController
 from gbs_api import GbsApi
-import tft_config
 import vga2_8x16 as small_font
+import config_manager
+import tft_config
 import st7789
 import utime
 

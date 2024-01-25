@@ -1,8 +1,7 @@
+import vga2_8x16 as small_font
 import network
 import socket
 import ure
-import time
-import vga2_8x16 as small_font
 import st7789
 import machine
 import utime
@@ -35,7 +34,7 @@ class WifiManager:
         connected = False
         try:
             # ESP connecting to WiFi takes time, wait a bit and try again:
-            time.sleep(3)
+            utime.sleep(3)
             if wlan_sta.isconnected():
                 print('\nConnected. Network config: ', wlan_sta.ifconfig())
                 return wlan_sta
@@ -120,7 +119,7 @@ class WifiManager:
                 wlan_ap.active(False)
                 wlan_ap.disconnect()
                 break
-            time.sleep(0.1)
+            utime.sleep(0.1)
             print('.', end='')
             self._menu.loadingIncrement()
         if connected:

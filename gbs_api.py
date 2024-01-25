@@ -1,5 +1,4 @@
 import requests
-#from ctypes import create_string_buffer
 from menu_controller import MenuItem
 
 slots = [
@@ -20,7 +19,6 @@ class GbsApi:
             r = requests.get(url, timeout=100)
             options = list()
             while True:
-            #for fileChunk in r.iter_content(chunk_size=32):
                 chunk  = r.raw.recv(32)
                 if not chunk:
                     break
@@ -37,8 +35,11 @@ class GbsApi:
     def set_option(self, id_code):
         slot_url="http://" + self.app_config['hostname'] + "/slot/set?slot=" + id_code
         apply_url = "http://" + self.app_config['hostname'] + "/uc?3"
-        requests.get(slot_url, data=None, timeout=10).close()
-        requests.get(apply_url, data=None, timeout=10).close()
+        try:
+            requests.get(slot_url, data=None, timeout=10).close()
+            requests.get(apply_url, data=None, timeout=10).close()
+        except:
+            print("Could not update")
         
     def get_url(self):
         return "http://" + self.app_config['hostname']

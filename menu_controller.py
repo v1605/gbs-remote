@@ -69,9 +69,7 @@ class MenuController():
         if index >= len(self._display_options) or self._info:
             return
         self.disable_buttons() 
-        self._write_option(index, st7789.BLACK, st7789.WHITE)
-        # debounce time - we ignore any activity diring this period 
-        
+        self._write_option(index, st7789.BLACK, st7789.WHITE)      
         self._gbs_api.set_option(self._display_options[index].id)
         utime.sleep_ms(600)
         self._write_option(index, st7789.WHITE, st7789.BLACK)
