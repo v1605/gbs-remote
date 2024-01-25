@@ -1,9 +1,9 @@
 # gbs-remote
-A wifi pico w remote for the gbs-control
+A wifi pico w remote for the [gbs-control](https://github.com/ramapcsx2/gbs-control) scaler.
 
 ## How to build your own
 1. Aquire a Raspberry Pi Pico W (with headers if you don't want to solder).
-2. Aquire a 1.3 WaveShare LCD (docs: https://www.waveshare.com/wiki/Pico-LCD-1.3) (eg. https://www.aliexpress.us/item/3256802431350939.html).
+2. Aquire a 1.3 WaveShare LCD (docs: https://www.waveshare.com/wiki/Pico-LCD-1.3) (eg link to purchase. https://www.aliexpress.us/item/3256802431350939.html).
 3. Attach the lcd to the pico.
 4. Put the Pi into boot mode (hold the boot button while connecting to a pc) and copy the lasted uf2 build to the pico.
 
