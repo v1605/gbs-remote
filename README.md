@@ -1,6 +1,6 @@
 # gbs-remote
 
-A wifi pico w remote for the [gbs-control](https://github.com/ramapcsx2/gbs-control) scaler.
+A Pi Pico W based remote control for [gbs-control](https://github.com/ramapcsx2/gbs-control) scaler.
 
 ![img](https://github.com/v1605/gbs-remote/assets/55302877/fa613fc9-b5e2-45a1-83d1-886393a13338)
 
