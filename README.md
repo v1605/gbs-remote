@@ -14,7 +14,11 @@ A Pi Pico W based remote control for [gbs-control](https://github.com/ramapcsx2/
 On first boot, the remote will boot into an access point mode. The remotes ssid and password will display on screen. Once connected, navigate to the configutation page (http://192.168.4.1) and enter your gbscontrol hostname and wifi credentials (your remote and gbscontrol must be on the same network). If successfully connected to wifi, the remote will reboot. The configuration page will be available on the remote from your network to configure or reconfigure the gbscontrol hostname, which defaults to gbscontrol.
 
 ## Operation
-Once connected to wifi and the gbscontrol's hostname is configured, the presets will disaply on screen. To select a preset, press the white button next to the option. Use the up and down directions of the joystick to scroll through the availble presets. The left and right directions toggle a information screen displaying the links to the remote's configuration page and the gbscontrol's ui. Pressing the center of the joystick will reload the presets from the gbscontrol.
+Once connected to wifi and the gbscontrol's hostname is configured, the presets will disaply on screen. To select a preset, press the white button next to the option. Use the up and down directions of the joystick to scroll through the availble presets. 
+
+The left and right directions toggle an information screen displaying the links to the remote's configuration page and the gbscontrol's ui. 
+
+Pressing the center of the joystick will reload the presets from the gbscontrol.
 
 ## Development setup
 If you want to contribute or tweak the code:
