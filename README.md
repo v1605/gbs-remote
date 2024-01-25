@@ -1,5 +1,8 @@
 # gbs-remote
+
 A wifi pico w remote for the [gbs-control](https://github.com/ramapcsx2/gbs-control) scaler.
+
+![img](https://github.com/v1605/gbs-remote/assets/55302877/fa613fc9-b5e2-45a1-83d1-886393a13338)
 
 ## How to build your own
 1. Aquire a Raspberry Pi Pico W (with headers if you don't want to solder).
