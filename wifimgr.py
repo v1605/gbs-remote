@@ -86,7 +86,7 @@ class WifiManager:
         return connected
 
     def read_profiles(self):
-        with open(NETWORK_PROFILES) as f:
+        with open(NETWORK_PROFILES, "a+") as f:
             lines = f.readlines()
         profiles = {}
         for line in lines:
