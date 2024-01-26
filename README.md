@@ -20,6 +20,22 @@ The left and right directions toggle an information screen displaying the links 
 
 Pressing the center of the joystick will reload the presets from the gbscontrol.
 
+## Rest API
+There is now a rest API to get a list of profiles and set the current profile.
+
+'GET /api/presets' returns list of current presets
+
+```json
+[
+  {
+    "id":"A",
+    "display":"SNES"
+  }
+]
+```
+'POST /api/presets' with a JSON body containing the id and/or display of a preset will switch to that preset.
+
+
 ## Development setup
 If you want to contribute or tweak the code:
 1. Either download the latest release or download the display firmware directly from the ST7789 Driver for MicroPython at https://github.com/russhughes/st7789_mpy
