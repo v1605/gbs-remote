@@ -74,7 +74,6 @@ class MenuController():
         self._gbs_api.set_option(self._display_options[index].id)
         utime.sleep_ms(500)
         self._write_option(index, st7789.WHITE, st7789.BLACK)
-        self.clear_loading()
         self.enable_buttons()
         
     def previous_page(self):
