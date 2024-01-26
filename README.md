@@ -33,7 +33,7 @@ There is now a rest API to get a list of profiles and set the current profile.
   }
 ]
 ```
-'POST /api/presets' with a JSON body containing the id and/or display of a prese. If found, the gbscontrol will switch to that preset.
+'POST /api/presets' with a JSON body containing the id and/or display of a preset. If found, the gbscontrol will switch to that preset.
 
 
 ## Development setup
