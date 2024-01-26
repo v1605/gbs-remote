@@ -35,7 +35,6 @@ def run():
         if '..' in path:
             # directory traversal is not allowed
             return 'Not found', 404
-        print('static/' + path)
         return send_file('static/' + path, max_age=3600)
     
     
@@ -60,7 +59,6 @@ def run():
     
     @app.route('/api/settings', methods=["POST"])
     def update_settings(request):
-        print(request.json)
         hostname = request.json['hostname'].strip()
         if len(hostname) > 0:
             config["hostname"] = hostname
@@ -68,5 +66,28 @@ def run():
                 menu.ip = wifiManager.get_connection().ifconfig()[0]
                 menu.reload_options()
         config_manager.save_config(config)
+        
+    @app.route('/api/presets', methods=["GET"])
+    def get_preset(request):
+        options = list(map(lambda x: x.__dict__, gbs_api.load_options()))
+        return Response(options)
     
+    @app.route('/api/presets', methods=["POST"])
+    def set_preset(request):
+        code = ""
+        if "id" in request.json:
+            gbs_api.set_option(request.json["id"])
+        else:
+            options = gbs_api.load_options();
+            name = request.json["display"].strip()
+            found = None;
+            try:
+                found = next(option for option in options if option.display == name) #No default?
+            except:
+                pass
+            if found is not None:
+                gbs_api.set_option(found.id)
+            else:
+                return Response("Could not find option", 404)
+        return Response("Updated option")
     app.run(port=80)

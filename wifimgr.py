@@ -121,11 +121,12 @@ class WifiManager:
                 break
             utime.sleep(0.1)
             print('.', end='')
-            self._menu.loadingIncrement()
+            self._menu.increment_loading()
         if connected:
             print('\nConnected. Network config: ', wlan_sta.ifconfig())          
         else:
             print('\nFailed. Not Connected to: ' + ssid)
+        self._menu.clear_loading()
         return connected
 
 

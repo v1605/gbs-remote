@@ -10,6 +10,7 @@ class MenuItem:
     def __init__(self, display, item_id):
         self.id = item_id
         self.display = display
+        
 
 class MenuController():
     
@@ -23,7 +24,7 @@ class MenuController():
         self.enable_buttons()
         self._gbs_api = gbs_api
         self.ip = ""
-        self.loading_increment = 10;
+        self._loading_increment = 10;
     
     def enable_buttons(self):
         self._buttons.key0.irq(trigger=machine.Pin.IRQ_FALLING, handler = lambda t: self._menu_button_handler(0))
@@ -69,10 +70,11 @@ class MenuController():
         if index >= len(self._display_options) or self._info:
             return
         self.disable_buttons() 
-        self._write_option(index, st7789.BLACK, st7789.WHITE)      
+        self._write_option(index, st7789.BLACK, st7789.WHITE)
         self._gbs_api.set_option(self._display_options[index].id)
-        utime.sleep_ms(600)
+        utime.sleep_ms(500)
         self._write_option(index, st7789.WHITE, st7789.BLACK)
+        self.clear_loading()
         self.enable_buttons()
         
     def previous_page(self):
@@ -102,17 +104,21 @@ class MenuController():
             self.set_page(self._page)
             
     def clear(self):
-        self.loading_increment = 10
+        self._loading_increment = 10
         self._tft.fill(st7789.BLACK)
         
     def write(self, text, x, y, font=small_font, color=st7789.WHITE):
         self._tft.text(font,text,x,y,color,st7789.BLACK)
         
-    def loadingIncrement(self):
-        self._tft.text(font,".",self.loading_increment,200,st7789.WHITE,st7789.BLACK)
-        self.loading_increment = self.loading_increment + 40
-        if(self.loading_increment > 240):
-            self.loading_increment = 10
-            self._tft.fill_rect(0, 200, 240, 40, st7789.BLACK)
+    def increment_loading(self):
+        self._tft.text(font,".",self._loading_increment,200,st7789.WHITE,st7789.BLACK)
+        self._loading_increment = self._loading_increment + 40
+        if(self._loading_increment > 240):
+            self._loading_increment = 10
+            self.clear_loading()
+    
+    def clear_loading(self):
+        self._loading_increment = 10
+        self._tft.fill_rect(0, 200, 240, 40, st7789.BLACK)
         
         
