@@ -20,6 +20,9 @@ The left and right directions toggle an information screen displaying the links 
 
 Pressing the center of the joystick will reload the presets from the gbscontrol.
 
+## Other Settings
+Post Url: a url to make post the chosen preset to. Useful for automation and tracking application (eg. Post to a homeassistant webhook to change lighting).
+
 ## Rest API
 There is now a rest API to get a list of profiles and set the current profile.
 
