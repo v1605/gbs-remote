@@ -33,7 +33,9 @@ async function checkWifi(){
 
 async function loadSettings(){
     const settings = await $.ajax({url: "/api/settings", method:"GET"});
-    $('#hostname').val(settings.hostname)
+    for(let key of Object.keys(settings)){
+        $(`#${key}`).val(settings[key])
+    }
 }
 
 async function saveSettings(){
