@@ -4,6 +4,8 @@ import utime
 import st7789
 import tft_buttons
 import machine
+import requests
+import json
 
 class MenuItem:
 
@@ -24,6 +26,7 @@ class MenuController():
         self.enable_buttons()
         self._gbs_api = gbs_api
         self.ip = ""
+        self.app_config = None
         self._loading_increment = 10;
     
     def enable_buttons(self):
@@ -69,12 +72,23 @@ class MenuController():
     def _menu_button_handler(self, index):
         if index >= len(self._display_options) or self._info:
             return
+        option = self._display_options[index]
         self.disable_buttons() 
         self._write_option(index, st7789.BLACK, st7789.WHITE)
-        self._gbs_api.set_option(self._display_options[index].id)
-        utime.sleep_ms(500)
+        self._gbs_api.set_option(option.id)
+        self._do_post(option)
+        utime.sleep_ms(400)
         self._write_option(index, st7789.WHITE, st7789.BLACK)
         self.enable_buttons()
+        
+    def _do_post(self, option):
+        if self.app_config["postUrl"] is not None and self.app_config["postUrl"] != "":
+            try:
+                url=self.app_config['postUrl']
+                r = requests.post(url, timeout=2000, data=json.dumps(option.__dict__), stream=True)
+                r.close()
+            except:
+                pass
         
     def previous_page(self):
         self.set_page(self._page - 1)

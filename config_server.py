@@ -19,6 +19,7 @@ def run():
     config = config_manager.load_config()
     gbs_api = GbsApi(config)
     menu = MenuController(tft, gbs_api)
+    menu.app_config = config
     wifiManager = WifiManager(menu)
     connected = wifiManager.get_connection() is not None
     if connected:
@@ -59,12 +60,15 @@ def run():
     
     @app.route('/api/settings', methods=["POST"])
     def update_settings(request):
-        hostname = request.json['hostname'].strip()
-        if len(hostname) > 0:
-            config["hostname"] = hostname
+        hostname = request.json['hostname']
+        if hostname is not None and len(hostname.strip()) > 0:
+            config["hostname"] = hostname.strip()
             if connected:
                 menu.ip = wifiManager.get_connection().ifconfig()[0]
                 menu.reload_options()
+        postUrl = request.json['postUrl']
+        if postUrl is not None:
+            config["postUrl"] = postUrl.strip() 
         config_manager.save_config(config)
         
     @app.route('/api/presets', methods=["GET"])
